@@ -8,7 +8,7 @@ HowdyPlan is a Chrome extension that helps Texas A&M students build class schedu
 
 HowdyPlan is built and operated by **Enoch Poon**, a Texas A&M student, as an individual project. It is free, has no ads, no analytics SDKs, and no investors asking for data.
 
-- **Contact:** enoch@howdyplan.com _(or use the "Report a bug" button in the extension if the inbox is slow)_
+- **Contact:** enochpoon11@gmail.com _(or use the "Report a bug" button in the extension if the inbox is slow)_
 - **Not affiliated with Texas A&M University.** HowdyPlan is an independent student-built tool. "Aggie" and "TAMU" references describe the student audience, not an institutional endorsement.
 - **Website:** https://howdyplan.com
 - **Developer:** Enoch Poon (individual, not a company)
