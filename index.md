@@ -20,9 +20,12 @@ The extension stores the following data on a server operated by the developer:
 |---|---|---|
 | Email address | You enter it during onboarding | Keys your profile so you can reinstall without re-entering everything |
 | Major | You pick from a list | Computes remaining degree requirements |
+| Display name of your major, major status (declared/pre-ETAM/target), campus (College Station or Galveston) | You pick during onboarding | Drives degree-plan matching, honors/campus filtering, and the subtitle in the side panel |
 | Completed courses (+ self-reported grades) | You enter them during onboarding | Filters out classes you've already finished |
-| Schedule preferences | You configure in the side panel | Drives the optimizer (time of day, days off, blocked times, min professor rating) |
+| Schedule preferences | You configure in the side panel | Drives the optimizer (time of day, days off, blocked times, transit buffer, per-course honors preference, min professor rating) |
 | CollegeScheduler session cookie (`.AspNet.Cookies`) | Captured when you visit `tamu.collegescheduler.com` | Sent to our server so we can refresh live section / seat data on your behalf |
+| Anonymous client ID (`X-Client-Id`) | Auto-generated — SHA-256 of your email for signed-in users, or a random per-install token for guests | Rate-limits heavy endpoints per-user instead of per-IP, and powers the "X Aggies planning" counter in the footer |
+| Extension debug logs (errors + warnings) | The extension's `/api/debug/log` endpoint, only when something breaks | Helps us fix bugs. We never send normal browsing activity — only caught exceptions and a few tagged user-triggered events |
 
 We do **not** collect: your TAMU password, SSO credentials, browsing history, pages you visit, or anything outside `tamu.collegescheduler.com`.
 
@@ -61,7 +64,7 @@ Only two third parties ever touch your data, and each is narrowly scoped:
 You can:
 
 - **See what we have on you** — email the contact address above and ask. We'll reply with your full record within a week.
-- **Delete everything** — open the side panel, scroll to the very bottom of the footer, and click **Delete my data**. Your profile, completed courses, preferences, session cookie, and bug reports tied to your email are removed from the database immediately and from backups within 30 days (as old backups roll off).
+- **Delete everything** — open the side panel, scroll to the very bottom of the footer, and click **Delete my data**. Your profile, completed courses, preferences, campus/major details, session cookie, seat-watch entries, and bug reports tied to your email are removed from the database immediately and from backups within 30 days (as old backups roll off). Extension debug logs are aggregated and not tied to your email, so they remain until their 90-day retention expires.
 - **Correct anything** — just update it in the extension; the server syncs on save.
 
 If the in-extension purge fails for any reason, email the contact address and we'll handle it manually within a week.
