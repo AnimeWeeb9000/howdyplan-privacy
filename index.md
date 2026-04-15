@@ -10,7 +10,6 @@ HowdyPlan is built and operated by **Enoch Poon**, a Texas A&M student, as an in
 
 - **Contact:** enoch@howdyplan.com _(or use the "Report a bug" button in the extension if the inbox is slow)_
 - **Not affiliated with Texas A&M University.** HowdyPlan is an independent student-built tool. "Aggie" and "TAMU" references describe the student audience, not an institutional endorsement.
-- **Website:** https://howdyplan.com
 - **Developer:** Enoch Poon (individual, not a company)
 
 ## What we collect
