@@ -23,7 +23,6 @@ The extension stores the following data on a server operated by the developer:
 | Completed courses (+ self-reported grades) | You enter them during onboarding | Filters out classes you've already finished |
 | Schedule preferences | You configure in the side panel | Drives the optimizer (time of day, days off, blocked times, min professor rating) |
 | CollegeScheduler session cookie (`.AspNet.Cookies`) | Captured when you visit `tamu.collegescheduler.com` | Sent to our server so we can refresh live section / seat data on your behalf |
-| Watched CRNs | You add them from the side panel | Lets the server poll for open seats and alert you |
 
 We do **not** collect: your TAMU password, SSO credentials, browsing history, pages you visit, or anything outside `tamu.collegescheduler.com`.
 
@@ -36,26 +35,23 @@ We do **not** collect: your TAMU password, SSO credentials, browsing history, pa
 
 ## How we use it
 
-Your data is used only to make the extension work for you:
+Your data is used for two things:
 
-1. **Personalize schedule optimization** — take your major, completed courses, and preferences into account when ranking schedules.
-2. **Refresh live section data** — use your CollegeScheduler session cookie to request current seat counts from `tamu.collegescheduler.com` on your behalf.
-3. **Poll watched classes** — check your watched CRNs on a periodic interval for open seats.
-4. **Send seat-open alerts** — when a watched class opens up, post a notification to a Discord webhook (either a shared alerts channel or a per-user webhook you configure).
+1. **Make the extension work for you** — your major, completed courses, and preferences feed the schedule optimizer. Your CollegeScheduler session cookie lets our server refresh live section data on your behalf.
+2. **Aggregate analysis and personal machine-learning research** — the developer (Enoch Poon) retains your profile data and may use it in aggregate for personal ML experiments and learning projects. Nothing is ever published, shared, sold, or connected back to you personally in any external output. If you don't want your data used this way, delete it anytime (instructions below).
 
 We never sell, rent, share, or transfer your data to advertisers, data brokers, or anyone else.
 
 ## Third parties
 
-Only three third parties ever touch your data, and each is narrowly scoped:
+Only two third parties ever touch your data, and each is narrowly scoped:
 
 - **CollegeScheduler.com** — we proxy requests through our server to refresh live sections using your session cookie. Traffic goes from our server back to CollegeScheduler's own domain; no new party sees it.
 - **Cloudflare Tunnel** — transport only. Cloudflare terminates the TLS tunnel that exposes the home server to the internet. It does not decrypt or store request bodies.
-- **Discord** — the destination for seat-open alerts via webhook. Discord sees only the short alert message (course code, CRN, open seats). It never sees your profile, cookies, or preferences.
 
 ## Retention
 
-- **Profile data** (email, major, completed courses, preferences, watched CRNs): kept until you delete it. You can wipe it yourself any time via **Admin mode → Purge my data** in the side panel.
+- **Profile data** (email, major, completed courses, preferences): kept indefinitely for the uses above, or until you delete it. You can delete it any time via the **Delete my data** link at the bottom of the side panel.
 - **Session cookie:** overwritten each time the extension captures a fresh one; removed from the server when you purge or when it expires upstream.
 - **Bug reports:** kept for 90 days, then deleted.
 - **Server logs:** request logs are kept 30 days and contain only email + endpoint + timestamp (no bodies).
@@ -65,7 +61,7 @@ Only three third parties ever touch your data, and each is narrowly scoped:
 You can:
 
 - **See what we have on you** — email the contact address above and ask. We'll reply with your full record within a week.
-- **Delete everything** — open the side panel, flip to Admin mode, click **Purge my data**. Your profile, completed courses, preferences, watched CRNs, session cookie, and bug reports tied to your email are removed from the database immediately and from backups within 30 days (as old backups roll off).
+- **Delete everything** — open the side panel, scroll to the very bottom of the footer, and click **Delete my data**. Your profile, completed courses, preferences, session cookie, and bug reports tied to your email are removed from the database immediately and from backups within 30 days (as old backups roll off).
 - **Correct anything** — just update it in the extension; the server syncs on save.
 
 If the in-extension purge fails for any reason, email the contact address and we'll handle it manually within a week.
